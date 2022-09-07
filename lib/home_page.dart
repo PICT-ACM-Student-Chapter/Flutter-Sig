@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
             child: Card(
               color: widgetColor,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text("Height"),
@@ -79,13 +79,49 @@ class HomePage extends StatelessWidget {
               Expanded(
                 child: Card(
                   color: widgetColor,
-                  child: Container(),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Weight"),
+                        Text("60 Kg"),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            FloatingActionButton(
+                              onPressed: null,
+                              child: Icon(Icons.add),
+                            ),
+                            FloatingActionButton(
+                              onPressed: null,
+                              child: Icon(Icons.remove),
+                            ),
+                          ],
+                        )
+                      ]),
                 ),
               ),
               Expanded(
                 child: Card(
                   color: widgetColor,
-                  child: Container(),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Age"),
+                        Text("19 Yr"),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            FloatingActionButton(
+                              onPressed: null,
+                              child: Icon(Icons.add),
+                            ),
+                            FloatingActionButton(
+                              onPressed: null,
+                              child: Icon(Icons.remove),
+                            ),
+                          ],
+                        )
+                      ]),
                 ),
               ),
             ]),
