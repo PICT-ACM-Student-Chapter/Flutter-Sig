@@ -58,7 +58,20 @@ class HomePage extends StatelessWidget {
           Expanded(
             child: Card(
               color: widgetColor,
-              child: Container(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text("Height"),
+                  Text("192 cm"),
+                  Slider(
+                    value: 150.0,
+                    onChanged: ((value) => {}),
+                    min: 100.0,
+                    max: 200,
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
