@@ -4,8 +4,18 @@ import 'package:flutter/src/widgets/framework.dart';
 
 Color widgetColor = const Color.fromARGB(255, 58, 39, 92);
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int age = 20;
+  int weight = 60;
+  int height = 160;
+  bool isMale = true;
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +28,27 @@ class HomePage extends StatelessWidget {
           Expanded(
             child: Row(children: [
               Expanded(
-                child: Card(
-                  color: widgetColor,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          Icons.male,
-                          color: Colors.blue,
-                          size: 80.0,
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text("Male"),
-                      ]),
+                child: GestureDetector(
+                  onTap: () {
+                    isMale = true;
+                    setState(() {});
+                  },
+                  child: Card(
+                    color: widgetColor,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.male,
+                            color: Colors.blue,
+                            size: 80.0,
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Text("Male"),
+                        ]),
+                  ),
                 ),
               ),
               Expanded(
@@ -63,10 +79,13 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text("Height"),
-                  Text("192 cm"),
+                  Text(height.toString() + " cm"),
                   Slider(
-                    value: 150.0,
-                    onChanged: ((value) => {}),
+                    value: height.toDouble(),
+                    onChanged: ((value) {
+                      height = value.round();
+                      setState(() {});
+                    }),
                     min: 100.0,
                     max: 200,
                   ),
@@ -83,16 +102,22 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text("Weight"),
-                        Text("60 Kg"),
+                        Text(weight.toString() + " Kg"),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             FloatingActionButton(
-                              onPressed: null,
+                              onPressed: () {
+                                weight++;
+                                setState(() {});
+                              },
                               child: Icon(Icons.add),
                             ),
                             FloatingActionButton(
-                              onPressed: null,
+                              onPressed: () {
+                                weight--;
+                                setState(() {});
+                              },
                               child: Icon(Icons.remove),
                             ),
                           ],
@@ -107,16 +132,22 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text("Age"),
-                        Text("19 Yr"),
+                        Text(age.toString() + " Yrs"),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             FloatingActionButton(
-                              onPressed: null,
+                              onPressed: () {
+                                age++;
+                                setState(() {});
+                              },
                               child: Icon(Icons.add),
                             ),
                             FloatingActionButton(
-                              onPressed: null,
+                              onPressed: () {
+                                age--;
+                                setState(() {});
+                              },
                               child: Icon(Icons.remove),
                             ),
                           ],
