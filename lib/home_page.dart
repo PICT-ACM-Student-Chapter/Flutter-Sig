@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import 'bmi_class.dart';
-
-Color widgetColor = const Color.fromARGB(255, 58, 39, 92);
+import 'constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +20,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("BMI Calculator"),
+        title: const Text(
+          "BMI Calculator",
+          style: TextStyle(fontSize: 27),
+        ),
+        backgroundColor: backgroundColor,
+        centerTitle: true,
+        elevation: 10,
       ),
       body: Column(
         children: [
@@ -39,16 +42,16 @@ class _HomePageState extends State<HomePage> {
                     color: isMale ? Colors.lightBlueAccent : widgetColor,
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
+                        children: [
+                          const Icon(
                             Icons.male,
                             color: Colors.blue,
                             size: 80.0,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
-                          Text("Male"),
+                          Text("Male", style: textStyle),
                         ]),
                   ),
                 ),
@@ -63,16 +66,16 @@ class _HomePageState extends State<HomePage> {
                     color: isMale ? widgetColor : Colors.pinkAccent,
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
+                        children: [
+                          const Icon(
                             Icons.female,
                             color: Colors.pink,
                             size: 80.0,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
-                          Text("Female"),
+                          Text("Female", style: textStyle),
                         ]),
                   ),
                 ),
@@ -86,8 +89,8 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Height"),
-                  Text(height.toString() + " cm"),
+                  Text("Height", style: textStyle),
+                  Text(height.toString() + " cm", style: textStyle),
                   Slider(
                     value: height.toDouble(),
                     onChanged: ((value) {
@@ -109,8 +112,8 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Weight"),
-                        Text(weight.toString() + " Kg"),
+                        Text("Weight", style: textStyle),
+                        Text(weight.toString() + " Kg", style: textStyle),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -119,14 +122,14 @@ class _HomePageState extends State<HomePage> {
                                 weight++;
                                 setState(() {});
                               },
-                              child: Icon(Icons.add),
+                              child: const Icon(Icons.add),
                             ),
                             FloatingActionButton(
                               onPressed: () {
                                 weight--;
                                 setState(() {});
                               },
-                              child: Icon(Icons.remove),
+                              child: const Icon(Icons.remove),
                             ),
                           ],
                         )
@@ -139,8 +142,8 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Age"),
-                        Text(age.toString() + " Yrs"),
+                        Text("Age", style: textStyle),
+                        Text(age.toString() + " Yrs", style: textStyle),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -149,14 +152,14 @@ class _HomePageState extends State<HomePage> {
                                 age++;
                                 setState(() {});
                               },
-                              child: Icon(Icons.add),
+                              child: const Icon(Icons.add),
                             ),
                             FloatingActionButton(
                               onPressed: () {
                                 age--;
                                 setState(() {});
                               },
-                              child: Icon(Icons.remove),
+                              child: const Icon(Icons.remove),
                             ),
                           ],
                         )
@@ -170,14 +173,12 @@ class _HomePageState extends State<HomePage> {
               BMI.calculate(height, weight);
             },
             child: Container(
-              color: Color(0xFFEB1555),
-              margin: EdgeInsets.only(top: 10.0),
+              color: const Color(0xFFEB1555),
+              margin: const EdgeInsets.only(top: 10.0),
               width: double.infinity,
               height: 50.0,
               child: Center(
-                child: Text(
-                  'Calculate',
-                ),
+                child: Text('Calculate', style: textStyle),
               ),
             ),
           ),
