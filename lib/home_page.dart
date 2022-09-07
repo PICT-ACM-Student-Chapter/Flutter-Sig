@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import 'bmi_class.dart';
+
 Color widgetColor = const Color.fromARGB(255, 58, 39, 92);
 
 class HomePage extends StatefulWidget {
@@ -162,6 +164,22 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ]),
+          ),
+          GestureDetector(
+            onTap: () {
+              BMI.calculate(height, weight);
+            },
+            child: Container(
+              color: Color(0xFFEB1555),
+              margin: EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: 50.0,
+              child: Center(
+                child: Text(
+                  'Calculate',
+                ),
+              ),
+            ),
           ),
         ],
       ),
