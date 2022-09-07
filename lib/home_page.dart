@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
                     setState(() {});
                   },
                   child: Card(
-                    color: widgetColor,
+                    color: isMale ? Colors.lightBlueAccent : widgetColor,
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
@@ -52,21 +52,27 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Expanded(
-                child: Card(
-                  color: widgetColor,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          Icons.female,
-                          color: Colors.pink,
-                          size: 80.0,
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text("Female"),
-                      ]),
+                child: GestureDetector(
+                  onTap: () {
+                    isMale = false;
+                    setState(() {});
+                  },
+                  child: Card(
+                    color: isMale ? widgetColor : Colors.pinkAccent,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.female,
+                            color: Colors.pink,
+                            size: 80.0,
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Text("Female"),
+                        ]),
+                  ),
                 ),
               ),
             ]),
